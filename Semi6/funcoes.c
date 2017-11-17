@@ -1,4 +1,8 @@
-
+/*
+// Lista 06
+// 30/10/2017
+// Gabriel Porto Oliveira (patonoideoriginal@gmail.com), Marina Silva da Silva (marina_silva98@hotmail.com).
+ */
 #include "cabecalho.h"          
 #include <stdio.h>
 #include <stdlib.h>
@@ -51,7 +55,7 @@ Arvore * insere(Arvore * a, int valor) {
         } else {
             a->dir = insere(a->dir, valor);
             if (altura(a->esq) - altura(a->dir) == -2) {
-                    a = rotEsq(a);
+                a = rotEsq(a);
                 if (altura(a->dir->esq) - altura(a->dir->dir) == -1) {
                     a = rotDirEsq(a);
                 }
@@ -82,15 +86,15 @@ Arvore * rotEsq(Arvore *a) {
     return aux;
 }
 
-Arvore * rotEsqDir(Arvore *a){
-    a->esq=rotEsq(a->esq);
-    a=rotDir(a);
+Arvore * rotEsqDir(Arvore *a) {
+    a->esq = rotEsq(a->esq);
+    a = rotDir(a);
     return a;
 }
 
-Arvore * rotDirEsq(Arvore *a){
-    a->dir=rotEsq(a->dir);
-    a=rotEsq(a);
+Arvore * rotDirEsq(Arvore *a) {
+    a->dir = rotEsq(a->dir);
+    a = rotEsq(a);
     return a;
 }
 
@@ -100,22 +104,21 @@ Arvore * excluir(Arvore * a, int valor) {
     } else {
         if (valor < a->info) { //exclui sae
             a->esq = excluir(a->esq, valor);
-            if((altura(a->esq)-altura(a->dir))==-2){
-                if((altura(a->dir->esq)-altura(a->dir->dir))==-1){
-                    a=rotEsq(a);
-                }
-                else{
-                    a=rotDirEsq(a);
+            if ((altura(a->esq) - altura(a->dir)) == -2) {
+                if ((altura(a->dir->esq) - altura(a->dir->dir)) == -1) {
+                    a = rotEsq(a);
+                } else {
+                    a = rotDirEsq(a);
                 }
             }
         } else {
             if (valor > a->info) { // exclui sad
                 a->dir = excluir(a->dir, valor);
-                if((altura(a->esq)-altura(a->dir))==2){
-                    if((altura(a->esq->esq)-altura(a->esq->dir))==1){
-                        a=rotDir(a);
-                    }else{
-                        a=rotEsqDir(a);
+                if ((altura(a->esq) - altura(a->dir)) == 2) {
+                    if ((altura(a->esq->esq) - altura(a->esq->dir)) == 1) {
+                        a = rotDir(a);
+                    } else {
+                        a = rotEsqDir(a);
                     }
                 }
             } else {
@@ -151,41 +154,41 @@ Arvore * excluir(Arvore * a, int valor) {
 
 void preOrdemF(Arvore* a, FILE *f) {
     if (a == NULL) {
-        fprintf(f,"%s","<>");
+        fprintf(f, "%s", "<>");
     }
     if (a != NULL) {
-        fprintf(f,"<%i", a->info);
+        fprintf(f, "<%i", a->info);
         preOrdemF(a->esq, f);
 
         preOrdemF(a->dir, f);
-        fprintf(f,"%s",">");
+        fprintf(f, "%s", ">");
     }
 }
 
 void inOrdemF(Arvore* a, FILE *f) {
     if (a == NULL) {
-        fprintf(f,"%s","<>");
+        fprintf(f, "%s", "<>");
     }
     if (a != NULL) {
 
-        inOrdemF(a->esq,f);
-        fprintf(f,"<%i", a->info);
-        inOrdemF(a->dir,f);
-        fprintf(f,"%s",">");
+        inOrdemF(a->esq, f);
+        fprintf(f, "<%i", a->info);
+        inOrdemF(a->dir, f);
+        fprintf(f, "%s", ">");
     }
 }
 
 void posOrdemF(Arvore* a, FILE *f) {
     if (a == NULL) {
-        fprintf(f,"%s","<>");
+        fprintf(f, "%s", "<>");
     }
     if (a != NULL) {
 
-        posOrdemF(a->esq,f);
-        fprintf(f,"%s",">");
-        posOrdemF(a->dir,f);
+        posOrdemF(a->esq, f);
+        fprintf(f, "%s", ">");
+        posOrdemF(a->dir, f);
 
-        fprintf(f,"<%i", a->info);
+        fprintf(f, "<%i", a->info);
     }
 }
 

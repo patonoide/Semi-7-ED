@@ -1,4 +1,8 @@
-
+/*
+// Lista 06
+// 30/10/2017
+// Gabriel Porto Oliveira (patonoideoriginal@gmail.com), Marina Silva da Silva (marina_silva98@hotmail.com).
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include "cabecalho.h"
@@ -57,9 +61,9 @@ int main(int argc, char** argv) {
                     preOrdem(a);
                 } else if (valor == 2) {
                     inOrdem(a);
-                } else if(valor == 3) {
+                } else if (valor == 3) {
                     posOrdem(a);
-                }else{
+                } else {
                     printf("Opcao Invalida");
                 }
                 break;
@@ -80,31 +84,31 @@ int main(int argc, char** argv) {
             {
                 printf("Informe a ordem para impressao:\n 1-Pre ordem\n 2-In ordem\n 3-Pos ordem\n Opcao:");
                 scanf("%i", &valor);
-                
+
                 FILE *f;
-                
+
 
                 if (valor == 1) {
                     if ((f = fopen("saidapreordem.txt", "w")) == NULL) {
                         printf("Erro ao abrir o arquivo!!!");
                     }
-                    preOrdemF(a,f);
+                    preOrdemF(a, f);
                 } else if (valor == 2) {
                     if ((f = fopen("saidainordem.txt", "w")) == NULL) {
-                         printf("Erro ao abrir o arquivo!!!");
+                        printf("Erro ao abrir o arquivo!!!");
                     }
-                    inOrdemF(a,f);
-                } else if (valor == 3){
+                    inOrdemF(a, f);
+                } else if (valor == 3) {
                     if ((f = fopen("saidaposordem.txt", "w")) == NULL) {
                         printf("Erro ao abrir o arquivo!!!");
                     }
-                    posOrdemF(a,f);
-                }else{
+                    posOrdemF(a, f);
+                } else {
                     printf("Opcao Invalida");
                 }
 
                 fclose(f);
-                
+
                 printf("Arquivo criado com sucesso!!!");
                 break;
             }
