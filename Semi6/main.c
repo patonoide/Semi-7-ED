@@ -10,7 +10,7 @@ int main(int argc, char** argv) {
     Arvore * t;
     printf("Portinho e MiniMarina Productions EC e nois 2017.\n");
     do {
-        printf("\nDigite a opcao desejada de acordo com o menu\n 1-Criar arvore.\n 2-Inserir elemento na arvore. \n 3-Excluir o elemento da arvore.\n 4-Imprimir a arvore.\n 5-Altura da arvore.\n 6-Liberar arvore\n 0-Sair\nOpcao:");
+        printf("\nDigite a opcao desejada de acordo com o menu\n 1-Criar arvore.\n 2-Inserir elemento na arvore. \n 3-Excluir o elemento da arvore.\n 4-Imprimir a arvore.\n 5-Altura da arvore.\n 6-Liberar arvore\n 7-Imprimir arvore em arquivo txt\n 0-Sair\nOpcao:");
         scanf("%i", &opcao);
 
         switch (opcao) {
@@ -29,11 +29,11 @@ int main(int argc, char** argv) {
                     a = insere(a, valor);
                     printf("Valor inserido com sucesso!!!");
                 } else {
-                   
+
                     printf("Valor ja inserido com sucesso!!!");
                 }
-               
-                
+
+
                 break;
             }
             case 3:
@@ -57,8 +57,10 @@ int main(int argc, char** argv) {
                     preOrdem(a);
                 } else if (valor == 2) {
                     inOrdem(a);
-                } else {
+                } else if(valor == 3) {
                     posOrdem(a);
+                }else{
+                    printf("Opcao Invalida");
                 }
                 break;
             }
@@ -74,7 +76,40 @@ int main(int argc, char** argv) {
                 printf("Arvore liberada com sucesso!!!");
                 break;
             }
-            case 0:{
+            case 7:
+            {
+                printf("Informe a ordem para impressao:\n 1-Pre ordem\n 2-In ordem\n 3-Pos ordem\n Opcao:");
+                scanf("%i", &valor);
+                
+                FILE *f;
+                
+
+                if (valor == 1) {
+                    if ((f = fopen("saidapreordem.txt", "w")) == NULL) {
+                        printf("Erro ao abrir o arquivo!!!");
+                    }
+                    preOrdemF(a,f);
+                } else if (valor == 2) {
+                    if ((f = fopen("saidainordem.txt", "w")) == NULL) {
+                         printf("Erro ao abrir o arquivo!!!");
+                    }
+                    inOrdemF(a,f);
+                } else if (valor == 3){
+                    if ((f = fopen("saidaposordem.txt", "w")) == NULL) {
+                        printf("Erro ao abrir o arquivo!!!");
+                    }
+                    posOrdemF(a,f);
+                }else{
+                    printf("Opcao Invalida");
+                }
+
+                fclose(f);
+                
+                printf("Arquivo criado com sucesso!!!");
+                break;
+            }
+            case 0:
+            {
                 printf("Indo embora...\n...\nTchau o/\n");
                 break;
             }

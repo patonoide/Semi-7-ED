@@ -1,3 +1,4 @@
+#include<stdio.h>
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -29,3 +30,10 @@ Arvore * libera(Arvore *a);
 int altura(Arvore * a);
 int max(int a, int b);
 Arvore* busca(Arvore* a, int valor);
+Arvore * rotDir(Arvore *a);
+Arvore * rotEsq(Arvore *a);
+Arvore * rotEsqDir(Arvore *a);
+Arvore * rotDirEsq(Arvore *a);
+void preOrdemF(Arvore* a, FILE *f);
+void inOrdemF(Arvore* a, FILE *f);
+void posOrdemF(Arvore* a, FILE *f);
